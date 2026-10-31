@@ -1,117 +1,221 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>OceanMoon — Intelligence Beyond Horizons</title>
-  <meta name="description" content="OceanMoon — Explore the future of AI, technology and global markets.">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#071426" />
+  <meta name="description" content="OceanMoon — AI-powered financial intelligence. Explore global markets, technology and the opportunities shaping tomorrow." />
+  <title>OceanMoon — AI-Powered Financial Intelligence</title>
   <style>
+    :root {
+      --bg: #071426;
+      --ink: #f5f8ff;
+      --muted: #a8b8cf;
+      --blue: #76baff;
+      --line: rgba(190, 215, 255, .16);
+      --glass: rgba(14, 35, 62, .58);
+    }
     * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
       margin: 0;
       min-height: 100vh;
-      font-family: Inter, Arial, sans-serif;
-      color: #f4f5fb;
+      color: var(--ink);
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background:
-        radial-gradient(ellipse at 50% 42%, #172c4c 0%, #0a1426 42%, #050914 100%);
-      display: flex;
-      flex-direction: column;
+        radial-gradient(ellipse at 78% 35%, rgba(48, 112, 183, .25), transparent 38%),
+        radial-gradient(ellipse at 15% 8%, rgba(50, 102, 160, .16), transparent 35%),
+        linear-gradient(135deg, #071426 0%, #0a1b31 48%, #061020 100%);
+      overflow-x: hidden;
     }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: .24;
+      background-image: radial-gradient(#c8e2ff 0.7px, transparent 0.7px);
+      background-size: 46px 46px;
+      mask-image: linear-gradient(to bottom, black, transparent 85%);
+    }
+    a { color: inherit; text-decoration: none; }
+    .shell { width: min(1160px, calc(100% - 48px)); margin: 0 auto; position: relative; }
     header {
-      padding: 30px 7%;
+      height: 86px;
       display: flex;
+      align-items: center;
       justify-content: space-between;
-      align-items: center;
+      border-bottom: 1px solid var(--line);
     }
-    .logo {
-      font-size: 21px;
-      font-weight: 700;
-      letter-spacing: 2px;
+    .brand { display: flex; align-items: center; gap: 12px; font-weight: 700; letter-spacing: 1.7px; font-size: 17px; }
+    .brand-mark {
+      width: 30px; height: 30px; border-radius: 50%;
+      background: linear-gradient(135deg, #e8f5ff 5%, #8fc8ff 52%, #4778c7 100%);
+      box-shadow: 0 0 25px rgba(112, 183, 255, .48);
+      position: relative;
     }
-    .logo span { color: #83baff; }
-    .tag {
-      color: #aab8d0;
-      font-size: 12px;
-      letter-spacing: 2px;
+    .brand-mark::after {
+      content: ""; position: absolute; width: 24px; height: 24px;
+      top: -2px; right: -5px; border-radius: 50%; background: #0a1b31;
     }
-    main {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 60px 24px 100px;
+    .brand span { color: #8fc8ff; }
+    nav { display: flex; align-items: center; gap: 34px; color: #c4d2e5; font-size: 13px; }
+    nav a:hover { color: white; }
+    .nav-cta, .primary {
+      display: inline-flex; align-items: center; justify-content: center;
+      border-radius: 999px; background: linear-gradient(110deg, #9bd2ff, #5c9ff0);
+      color: #061426; font-weight: 650; transition: transform .2s, box-shadow .2s;
     }
-    .moon {
-      width: 112px;
-      height: 112px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #fff 5%, #b9d7ff 55%, #6889c1 100%);
-      box-shadow: 0 0 45px #8abaff55, 0 0 110px #568dff30;
-      margin-bottom: 42px;
+    .nav-cta { padding: 11px 19px; font-size: 12px; }
+    .primary { padding: 15px 24px; font-size: 13px; box-shadow: 0 8px 30px rgba(76, 151, 239, .22); }
+    .nav-cta:hover, .primary:hover { transform: translateY(-2px); box-shadow: 0 12px 34px rgba(76, 151, 239, .35); }
+    .hero {
+      min-height: 590px; display: grid; grid-template-columns: 1.03fr .97fr;
+      align-items: center; gap: 28px; padding: 60px 0 54px;
     }
-    h1 {
-      font-size: clamp(42px, 7vw, 76px);
-      letter-spacing: 5px;
-      margin: 0 0 20px;
+    .eyebrow { color: #91c8ff; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 25px; }
+    h1 { font-size: clamp(48px, 6.4vw, 78px); line-height: 1.02; letter-spacing: -3.8px; margin: 0; font-weight: 650; }
+    h1 .accent { display: block; color: #8dc7ff; }
+    .lead { max-width: 510px; color: var(--muted); line-height: 1.85; font-size: 16px; margin: 26px 0 32px; }
+    .actions { display: flex; align-items: center; gap: 13px; flex-wrap: wrap; }
+    .secondary {
+      display: inline-flex; padding: 14px 22px; border: 1px solid var(--line);
+      border-radius: 999px; color: #d9e8fa; font-size: 13px;
+      background: rgba(255,255,255,.025);
     }
-    .subtitle {
-      color: #aabbd4;
-      font-size: clamp(14px, 2vw, 18px);
-      letter-spacing: 3px;
-      margin-bottom: 25px;
+    .secondary:hover { border-color: rgba(143,200,255,.55); background: rgba(143,200,255,.07); }
+    .visual { min-height: 390px; position: relative; display: grid; place-items: center; }
+    .orb {
+      width: min(390px, 75vw); aspect-ratio: 1; border-radius: 50%; position: relative;
+      background:
+        radial-gradient(circle at 34% 27%, rgba(255,255,255,.95), rgba(166,213,255,.8) 8%, transparent 27%),
+        radial-gradient(circle at 40% 36%, #4f8fc9 0%, #173d68 36%, #0a1c36 65%, #061225 75%);
+      box-shadow: inset -35px -25px 65px rgba(0,0,0,.48), 0 0 90px rgba(71,145,220,.2);
+      overflow: hidden;
     }
-    .description {
-      max-width: 570px;
-      color: #8998b2;
-      line-height: 1.9;
-      font-size: 14px;
+    .orb::before {
+      content: ""; position: absolute; inset: 0; border-radius: 50%;
+      background: repeating-linear-gradient(165deg, transparent 0 17px, rgba(178,220,255,.08) 18px 19px, transparent 20px 34px);
+      opacity: .65; transform: rotate(-18deg) scale(1.25);
     }
-    .button {
-      margin-top: 38px;
-      padding: 14px 32px;
-      border: 1px solid #739edb;
-      border-radius: 30px;
-      color: white;
-      text-decoration: none;
-      letter-spacing: 1px;
-      transition: .25s;
+    .orb::after {
+      content: ""; position: absolute; width: 120%; height: 38%; left: -10%; bottom: -8%;
+      border-top: 1px solid rgba(177,220,255,.65); border-radius: 50%;
+      box-shadow: 0 -12px 45px rgba(92,174,255,.25);
+      transform: rotate(-12deg);
     }
-    .button:hover {
-      background: #739edb;
-      color: #071020;
+    .orbit {
+      position: absolute; width: min(470px, 88vw); aspect-ratio: 1;
+      border: 1px solid rgba(152,204,255,.22); border-radius: 50%; transform: rotate(-24deg) scaleY(.42);
     }
-    footer {
-      text-align: center;
-      padding: 25px;
-      color: #63718b;
-      font-size: 11px;
-      letter-spacing: 2px;
+    .orbit::after {
+      content: ""; position: absolute; width: 7px; height: 7px; border-radius: 50%;
+      background: #c4e5ff; box-shadow: 0 0 16px #9bd2ff; top: 15%; left: 18%;
+    }
+    .float-note {
+      position: absolute; right: 0; bottom: 38px; padding: 13px 17px;
+      border: 1px solid var(--line); border-radius: 14px; background: rgba(8,24,43,.72);
+      backdrop-filter: blur(14px); color: #c7d8ec; font-size: 11px; letter-spacing: 1px;
+    }
+    .float-note strong { display: block; color: white; font-size: 13px; margin-bottom: 5px; }
+    .section-label { color: #8198b5; text-align: center; font-size: 10px; letter-spacing: 3px; margin: 15px 0 22px; }
+    .features { display: grid; grid-template-columns: repeat(4, 1fr); gap: 13px; padding-bottom: 72px; }
+    .feature {
+      padding: 22px 20px; border: 1px solid var(--line); border-radius: 17px;
+      background: linear-gradient(145deg, rgba(19,43,72,.7), rgba(9,25,45,.52));
+      min-height: 142px; transition: transform .2s, border-color .2s;
+    }
+    .feature:hover { transform: translateY(-4px); border-color: rgba(143,200,255,.45); }
+    .feature-icon { color: #8fc8ff; font-size: 20px; margin-bottom: 17px; }
+    .feature h3 { margin: 0 0 8px; font-size: 14px; font-weight: 600; }
+    .feature p { margin: 0; color: #91a5bf; font-size: 11px; line-height: 1.6; }
+    footer { border-top: 1px solid var(--line); padding: 24px 0 30px; color: #7187a4; font-size: 11px; display: flex; justify-content: space-between; gap: 15px; }
+    @media (max-width: 760px) {
+      .shell { width: min(100% - 36px, 560px); }
+      header { height: 72px; }
+      nav { gap: 15px; } nav a:not(.nav-cta) { display: none; }
+      .hero { grid-template-columns: 1fr; padding: 66px 0 30px; gap: 4px; }
+      .hero-copy { text-align: center; }
+      .lead { margin-left: auto; margin-right: auto; font-size: 14px; }
+      .actions { justify-content: center; }
+      .visual { min-height: 330px; }
+      .orb { width: min(290px, 70vw); }
+      .orbit { width: min(350px, 86vw); }
+      .float-note { right: 1%; bottom: 18px; }
+      .features { grid-template-columns: repeat(2, 1fr); padding-bottom: 45px; }
+      footer { flex-direction: column; text-align: center; }
+    }
+    @media (max-width: 420px) {
+      h1 { letter-spacing: -2.4px; }
+      .features { grid-template-columns: 1fr; }
+      .feature { min-height: auto; }
+      .tagline { font-size: 9px; }
     }
   </style>
 </head>
 <body>
-  <header>
-    <div class="logo">OCEAN<span>MOON</span></div>
-    <div class="tag">EXPLORE THE UNKNOWN</div>
-  </header>
+  <div class="shell">
+    <header>
+      <a class="brand" href="#" aria-label="OceanMoon home">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span style="color:#f5f8ff">OCEAN<span>MOON</span></span>
+      </a>
+      <nav aria-label="Main navigation">
+        <a href="#home">Home</a>
+        <a href="#research">Research</a>
+        <a href="#markets">Markets</a>
+        <a href="#about">About</a>
+        <a class="nav-cta" href="mailto:hello@oceanmoon.ai">Get in touch</a>
+      </nav>
+    </header>
 
-  <main>
-    <div class="moon"></div>
-    <h1>OCEANMOON</h1>
-    <div class="subtitle">INTELLIGENCE BEYOND HORIZONS</div>
-    <p class="description">
-      Discover the signals shaping tomorrow.
-      Explore artificial intelligence, global technology,
-      financial markets and the opportunities of a changing world.
-    </p>
-    <a class="button" href="mailto:hello@oceanmoon.ai">
-      COMING SOON
-    </a>
-  </main>
+    <main id="home">
+      <section class="hero">
+        <div class="hero-copy">
+          <div class="eyebrow">A clearer view of what comes next</div>
+          <h1>See beyond<span class="accent">the market.</span></h1>
+          <p class="lead">OceanMoon brings artificial intelligence, global markets and deep research into one thoughtful space — helping you explore ideas and understand the forces shaping tomorrow.</p>
+          <div class="actions">
+            <a class="primary" href="#research">Explore OceanMoon <span aria-hidden="true">&nbsp;→</span></a>
+            <a class="secondary" href="#about">Discover our vision</a>
+          </div>
+        </div>
+        <div class="visual" aria-label="Abstract glowing blue planet illustration">
+          <div class="orbit"></div>
+          <div class="orb"></div>
+          <div class="float-note"><strong>INTELLIGENCE, IN PERSPECTIVE</strong>AI · Technology · Global Markets</div>
+        </div>
+      </section>
 
-  <footer>© 2026 OCEANMOON · A NEW PERSPECTIVE</footer>
+      <div class="section-label" id="research">EXPLORE THE LANDSCAPE</div>
+      <section class="features" id="markets">
+        <a class="feature" href="mailto:hello@oceanmoon.ai?subject=IPO%20Research">
+          <div class="feature-icon">↗</div>
+          <h3>IPO Research</h3>
+          <p>Follow emerging companies, listings and market milestones.</p>
+        </a>
+        <a class="feature" href="mailto:hello@oceanmoon.ai?subject=AI%20Intelligence">
+          <div class="feature-icon">✳</div>
+          <h3>AI Intelligence</h3>
+          <p>Explore the companies and technologies reshaping industries.</p>
+        </a>
+        <a class="feature" href="mailto:hello@oceanmoon.ai?subject=Global%20Markets">
+          <div class="feature-icon">◎</div>
+          <h3>Global Markets</h3>
+          <p>Connect the signals across major markets and economies.</p>
+        </a>
+        <a class="feature" href="mailto:hello@oceanmoon.ai?subject=Deep%20Research">
+          <div class="feature-icon">⌁</div>
+          <h3>Deep Research</h3>
+          <p>Turn complex information into clear, structured insight.</p>
+        </a>
+      </section>
+    </main>
+
+    <footer id="about">
+      <span>© 2026 OCEANMOON. A NEW PERSPECTIVE.</span>
+      <span class="tagline">INTELLIGENCE BEYOND HORIZONS</span>
+    </footer>
+  </div>
 </body>
 </html>
